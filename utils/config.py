@@ -1,0 +1,1 @@
+DESCRIPTION = "Disced is a bridge between Discord and Guilded"
