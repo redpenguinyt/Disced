@@ -1,1 +1,1 @@
-DESCRIPTION = "Disced is a bridge between Discord and Guilded"
+DESCRIPTION = "Disced is a stress-free bridge between Discord and Guilded"
