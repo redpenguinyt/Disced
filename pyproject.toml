@@ -6,10 +6,7 @@ authors = ["Your Name <you@example.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-websockets = "^9.1"
 discord = "^1.7.3"
-requests = "^2.26.0"
-discord-webhook = "^0.14.0"
 "guilded.py" = "^1.1.0"
 
 [tool.poetry.dev-dependencies]
