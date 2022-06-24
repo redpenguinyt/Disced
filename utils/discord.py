@@ -9,7 +9,7 @@ discordbot = commands.Bot(
 
 @discordbot.event
 async def on_ready():
-	print("Discord| Ready")
+	print("Discord | Ready")
 
 @discordbot.command()
 async def test(ctx):
@@ -17,9 +17,8 @@ async def test(ctx):
 	await ctx.channel.send(embed=embed)
 
 async def send_to_discord(webhook_url, username, avatar_url, message):
-	async with aiohttp.ClientSession() as session:
-		webhook = discord.Webhook.from_url(
-			webhook_url,
-			adapter=discord.AsyncWebhookAdapter(session)
-		)
-	await webhook.send(message, username=username, avatar_url=avatar_url)
+	webhook = discord.Webhook.from_url(
+		webhook_url,
+		adapter=discord.RequestsWebhookAdapter()
+	)
+	webhook.send(message, username=f"[GUILDED] {username}", avatar_url=avatar_url)

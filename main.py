@@ -1,7 +1,6 @@
-import os, asyncio, requests
+import os, asyncio
 from utils.discord import discord, discordbot, send_to_discord
 from utils.guilded import guilded, guildedbot, send_to_guilded
-from discord_webhook import DiscordWebhook
 
 # Guilded
 
@@ -17,6 +16,8 @@ async def on_message(message):
 				message.content
 			)
 
+	await guildedbot.process_commands(message)
+
 # Discord
 
 @discordbot.event
@@ -31,7 +32,11 @@ async def on_message(message):
 				message.content
 			)
 
+	await discordbot.process_commands(message)
+
 # Run
 
-# discordbot.run(os.environ["discord-token"])
-guildedbot.run(os.environ['guilded-token'])
+loop = asyncio.get_event_loop()
+loop.create_task(guildedbot.start(os.environ['guilded-token']))
+loop.create_task(discordbot.start(os.environ['discord-token']))
+loop.run_forever()
